@@ -84,6 +84,30 @@ export const ICONS: Record<string, PixelIconDef> = {
     rows: ['............', '......kkkk..', '.....k....k.', '.....k....k.', '...kkkk..k..', '..k..k..k...', '.k..k..k....', '.k....k.....', '..kkkk......', '............'],
     palette: { k: '#5ff2e4' },
   },
+  car: {
+    rows: ['................', '................', '................', '................', '......aa....bbb.', '....baccab.bddeb', '...bdddddebbdefb', '.bbbdeffffbbdefb', 'bdddefggggddeefb', 'bdeeeeddddeeeefb', 'effffffffffffffb', 'bahccabbbahccab.', '.acica...acica..', '.accja...accja..', '..aaa.....aaa...', '................'],
+    palette: { a: '#000000', b: '#3d0b08', c: '#2a2a2a', d: '#ff7a6e', e: '#d0302a', f: '#861913', g: '#ffe27a', h: '#3a3a3a', i: '#d6d6d6', j: '#151515' },
+  },
+  controller: {
+    rows: ['................', '................', '................', '................', '..aaaaaaaaaaaa..', '.abbcbbbbbbcbca.', '.abdecccccdfcda.', '.aceeebccdgchca.', 'abccebcccccibcca', 'abccbccccccbccda', 'abcccddddddcccda', 'abccdaaaaaabccda', 'acddda....acddda', '.aaaa......aaaa.', '................', '................'],
+    palette: { a: '#2f3242', b: '#f0f0ff', c: '#c9cde0', d: '#8a8fa8', e: '#2a2a2a', f: '#d0302a', g: '#5fae3a', h: '#3d93d8', i: '#ffe27a' },
+  },
+  palette: {
+    rows: ['................', '.....aaaaaa.....', '...aabbbbbcaa...', '..abbcccddcbca..', '..abcdddeebcda..', '.abcdffbbbcdcca.', '.abccbbcccdgbda.', '.abcddccccdgbda.', '.abdhhbccddccda.', '.abcbcccdaaabda.', '.accdiccda.abda.', '..abccibdaaaca..', '..acdcbccbbcda..', '...aacdddddaa...', '.....aaaaaa.....', '................'],
+    palette: { a: '#3a2510', b: '#d9b37a', c: '#b0844a', d: '#7a5528', e: '#ffe27a', f: '#d0302a', g: '#3d93d8', h: '#5fae3a', i: '#d6d6d6' },
+  },
+  wing: {
+    rows: ['................', '................', '.aaaaaaaaaaaa...', 'abbbbbbbbbbbbaa.', '.aaabbbbbbbbbbba', '...cccccaaaaaaa.', '..cddddeccc.....', '.cdeeeeeddeccc..', '.ceeeeeeeeedeec.', '..cefeeeefffcc..', '...ccefffccc....', '..aaaaaaaaa.....', '.abbbbbbbbbaaaa.', '..aaabbbbbbbbbba', '.....aaaaaaaaaa.', '................'],
+    palette: { a: '#0f2b4a', b: '#3d93d8', c: '#2f3242', d: '#f0f0ff', e: '#c9cde0', f: '#8a8fa8' },
+  },
+  brick: {
+    rows: ['................', '................', '...aaa.aaa.aa...', '..abbcabbcabca..', '..abcdabcdabda..', '..abcdabcdabda..', '.abcccbcccbccca.', '.abccccccccccda.', '.abccccccccccda.', '.abccccccccccda.', '.abccccccccccda.', '.abccccccccccda.', '.acddddddddddda.', '..aaaaaaaaaaaa..', '................', '................'],
+    palette: { a: '#3d0b08', b: '#ff7a6e', c: '#d0302a', d: '#861913' },
+  },
+  ball: {
+    rows: ['.......aa.......', '....aaabbaaa....', '...accbddccba...', '..acbbbbecbbba..', '.acbbbbfecbbbba.', '.abbbbbfecbbbfa.', '.gdbfffddbfffdg.', 'abdeeeddddeeedba', 'abdcccbddcccbdba', '.acbbbfeebbbbba.', '.acbbfecbebbbfa.', '.abbfecbbbebbfa.', '..abddcbbfddba..', '...abbfbbfbba...', '....aaabfaaa....', '.......aa.......'],
+    palette: { a: '#3b392f', b: '#e3dfd0', c: '#ffffff', d: '#2a2a2a', e: '#d6d6d6', f: '#a8a491', g: '#000000' },
+  },
 }
 
 ICONS.chart = ICONS.clock
