@@ -12,10 +12,10 @@ const p = computed(() => data.value?.profile ?? null)
 const blog = computed(() => safeUrl(p.value?.blog))
 
 const cards = [
-  { key: 'interests', title: 'What I’m into', icon: 'diamond', text: site.about.interests },
-  { key: 'approach', title: 'How I solve problems', icon: 'pickaxe', text: site.about.approach },
-  { key: 'philosophy', title: 'Development philosophy', icon: 'book', text: site.about.philosophy },
-  { key: 'goals', title: 'Current goals', icon: 'compass', text: site.about.goals },
+  { key: 'development', title: 'What I develop', icon: 'controller', text: site.about.development, list: site.about.developmentAreas },
+  { key: 'interests', title: 'Formula One & motorsport', icon: 'car', text: site.about.interests, list: [] as string[] },
+  { key: 'goals', title: 'Current goals', icon: 'compass', text: site.about.goals, list: [] as string[] },
+  { key: 'approach', title: 'How I solve problems', icon: 'pickaxe', text: site.about.approach, list: [] as string[] },
 ].filter((c) => c.text)
 </script>
 
@@ -51,6 +51,9 @@ const cards = [
               <span class="slot ic"><PixelIcon :name="c.icon" :size="22" /></span>
               <h3 class="pixel">{{ c.title }}</h3>
             </div>
+            <ol v-if="c.list.length" class="areas">
+              <li v-for="(item, n) in c.list" :key="item"><span class="num pixel">{{ n + 1 }}</span>{{ item }}</li>
+            </ol>
             <p>{{ c.text }}</p>
           </article>
         </div>
@@ -135,6 +138,30 @@ const cards = [
 .card p {
   margin: 10px 0 0;
   color: var(--body);
+}
+.areas {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.areas li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--heading);
+}
+.num {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+  color: #062414;
+  background: var(--emerald);
+  border: 2px solid var(--edge);
 }
 .card-head {
   display: flex;
