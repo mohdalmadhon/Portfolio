@@ -144,6 +144,7 @@ export async function collectGithubData(opts) {
       defaultBranch: str(r.default_branch, 120) || 'main',
       parent: null,
       techs: [],
+      contributors: null,
       previewImage: `https://opengraph.githubassets.com/1/${str(r.full_name, 300)}`,
       previewKind: 'social',
     }
@@ -165,6 +166,22 @@ export async function collectGithubData(opts) {
     }
   })
   if (langSkipped) notes.push(`Language byte statistics were loaded for ${langTargets.length - langSkipped} of ${langTargets.length} repositories to stay within the unauthenticated API limit; the rest use their primary language only.`)
+
+  let contribSkipped = 0
+  await pool(langTargets, 4, async (repo, idx) => {
+    if (!full && (core.remaining < 8 || idx >= 30)) {
+      contribSkipped++
+      return
+    }
+    const list = await soft(`/repos/${repo.fullName}/contributors?per_page=100`)
+    if (Array.isArray(list)) {
+      repo.contributors = list
+        .filter((c) => c && typeof c.login === 'string' && c.type !== 'Bot' && !/\[bot\]$/.test(c.login))
+        .slice(0, 40)
+        .map((c) => ({ login: str(c.login, 100), avatarUrl: str(c.avatar_url, 400), htmlUrl: str(c.html_url, 300), commits: num(c.contributions) }))
+    }
+  })
+  if (contribSkipped) notes.push(`Contributor lists were loaded for ${langTargets.length - contribSkipped} of ${langTargets.length} repositories; the rest load when you open a project.`)
 
   for (const repo of repos) repo.techs = techsFromTopics(techMap, repo.topics)
 
