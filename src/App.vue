@@ -7,7 +7,6 @@ import HotBar from './components/layout/HotBar.vue'
 import FooterBar from './components/layout/FooterBar.vue'
 import WelcomeDialog from './components/layout/WelcomeDialog.vue'
 import { getSections, showDrafts } from './config/sections'
-import { site } from './config/site'
 import { useGithub } from './composables/useGithub'
 import { useWorld } from './composables/useWorld'
 import { useNavigation } from './composables/useNavigation'
@@ -18,9 +17,14 @@ const world = useWorld()
 const route = useRoute()
 const { go } = useNavigation()
 
-watch(displayName, (n) => {
-  if (route.name === 'home') document.title = n ? `${n} · ${site.title}` : `${site.title} Portfolio`
-})
+const PAGE_TITLE = 'Mohammed - Portfolio'
+watch(
+  () => route.name,
+  (name) => {
+    if (name !== 'post') document.title = PAGE_TITLE
+  },
+  { immediate: true },
+)
 
 onMounted(() => load())
 </script>
