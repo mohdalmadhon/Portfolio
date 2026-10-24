@@ -67,11 +67,11 @@ export interface SiteConfig {
   heroIntro: string
   about: {
     bio: string
+    development: string
+    developmentAreas: string[]
     interests: string
-    approach: string
-    philosophy: string
     goals: string
-    draft?: boolean
+    approach: string
   }
   contact: {
     email: string
@@ -99,15 +99,13 @@ export const site: SiteConfig = {
   heroIntro:
     'I design and build web applications end to end, from responsive, interactive interfaces to the APIs, real-time services and databases behind them.',
   about: {
-    bio: 'I am a full-stack developer who enjoys turning ideas into complete, working products. I like building things from first principles so I understand every layer of the stack.',
-    interests:
-      'Interactive web experiences, real-time systems, backend services and APIs, and the craft of making interfaces feel fast and alive.',
+    bio: 'I am a developer who enjoys turning ideas into complete, working products, and I like building things from first principles so I understand every layer.',
+    development: 'Game development comes first: building games and the systems behind them. I am also drawn to systems programming and to web development, where I build full-stack applications end to end.',
+    developmentAreas: ['Game development', 'Systems programming', 'Web development'],
+    interests: 'I am a big fan of Formula One and motorsport: the engineering, the race strategy and the speed behind every lap.',
+    goals: 'Complete the development of my first game, and build a mini game engine in Rust or C++.',
     approach:
       'Break the problem down, build the smallest thing that works, measure it, and iterate. I prefer readable code, clear data models and honest trade-offs over cleverness.',
-    philosophy:
-      'Software should be understandable by the next person who opens it. Good tools disappear and let people focus on what they came to do.',
-    goals:
-      'Grow as an engineer by shipping real projects, deepening my backend and systems knowledge, and contributing to teams building meaningful products.',
   },
   contact: {
     email: 'mohammedalmadhoon000@gmail.com',
