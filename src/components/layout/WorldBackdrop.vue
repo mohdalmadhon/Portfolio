@@ -4,6 +4,7 @@ import { useSettings } from '../../composables/useSettings'
 import { useWorld } from '../../composables/useWorld'
 import { site } from '../../config/site'
 import type { WorldEngine } from '../../three/engine'
+import { isLiteDevice } from '../../three/device'
 
 const emit = defineEmits<{ select: [section: string] }>()
 const { settings, reducedMotion, theme } = useSettings()
@@ -46,6 +47,7 @@ async function boot() {
       skeletonUrl: `${base}textures/skeleton.png`,
       capeUrl: site.skin.cape ? `${base}textures/cape.png` : null,
       biome: theme.value === 'dark' ? 'ancient' : 'overworld',
+      lite: settings.quality !== 'high' && isLiteDevice(),
       onHover: (label, x, y) => (tip.value = label ? { label, x, y } : null),
       onSelect: (s) => emit('select', s),
       onCharacterHover: (a) => (world.lensActive = a),
@@ -75,7 +77,7 @@ function teardown() {
 watch(() => world.section, (s) => engine?.setSection(s))
 watch(() => world.timeOfDay, (t) => engine?.setTimeOfDay(t))
 watch(() => world.xray, (x) => engine?.setXray(x ? 'auto' : 'off'))
-watch(() => settings.quality, (q) => engine?.setQuality(q))
+watch(() => settings.quality, () => restart())
 watch(reducedMotion, (v) => engine?.setReducedMotion(v))
 watch(theme, () => {
   if (settings.world) restart()
