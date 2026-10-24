@@ -25,6 +25,7 @@ export interface EngineOptions extends EngineCallbacks {
   skeletonUrl: string
   capeUrl: string | null
   biome: Biome
+  lite?: boolean
 }
 
 interface View { pos: THREE.Vector3; target: THREE.Vector3 }
@@ -110,6 +111,7 @@ export class WorldEngine {
   private cb: EngineCallbacks
   private size = { w: 1, h: 1 }
   private shadowsEnabled: boolean
+  private lite: boolean
   private headLook = new THREE.Vector2()
   private cleanup: (() => void)[] = []
   private extraDisposables: { dispose(): void }[] = []
@@ -121,11 +123,12 @@ export class WorldEngine {
     this.reducedMotion = opts.reducedMotion
     this.biome = opts.biome
     this.cb = opts
-    this.shadowsEnabled = opts.quality !== 'low'
+    this.lite = !!opts.lite
+    this.shadowsEnabled = opts.quality !== 'low' && !this.lite
     this.renderer = new THREE.WebGLRenderer({
       canvas,
-      antialias: opts.quality !== 'low',
-      powerPreference: 'high-performance',
+      antialias: opts.quality !== 'low' && !opts.lite,
+      powerPreference: opts.lite ? 'low-power' : 'high-performance',
       alpha: false,
     })
     this.renderer.outputColorSpace = THREE.SRGBColorSpace
@@ -178,7 +181,11 @@ export class WorldEngine {
     this.sun.shadow.normalBias = 0.02
     this.scene.add(this.sun, this.sun.target)
 
-    this.world = buildWorld(this.textures, this.shadowsEnabled, this.biome)
+    this.world = buildWorld(this.textures, this.shadowsEnabled, this.biome, this.lite)
+    if (this.lite) {
+      this.world.beaconLight.visible = false
+      this.world.torchLight.visible = false
+    }
     this.scene.add(this.world.group)
     if (this.biome === 'ancient') {
       this.hemi.color.set('#5a6e7a')
@@ -219,7 +226,7 @@ export class WorldEngine {
     this.scene.add(this.sunMesh, this.moonMesh)
     this.extraDisposables.push(disc, sunMat, moonMat)
 
-    const count = this.quality === 'low' ? 60 : 160
+    const count = this.lite ? 36 : this.quality === 'low' ? 60 : 160
     const pp = new Float32Array(count * 3)
     this.particleSeeds = new Float32Array(count * 4)
     for (let i = 0; i < count; i++) {
@@ -300,7 +307,8 @@ export class WorldEngine {
 
   private applyQuality() {
     const dpr = window.devicePixelRatio || 1
-    if (this.quality === 'high') this.maxPixelRatio = Math.min(dpr, 2)
+    if (this.lite) this.maxPixelRatio = this.quality === 'high' ? Math.min(dpr, 1.5) : this.quality === 'low' ? 0.75 : Math.min(dpr, 1.25)
+    else if (this.quality === 'high') this.maxPixelRatio = Math.min(dpr, 2)
     else if (this.quality === 'low') this.maxPixelRatio = Math.min(dpr, 1) * 0.8
     else this.maxPixelRatio = Math.min(dpr, 1.5)
     this.pixelRatio = this.maxPixelRatio
@@ -585,8 +593,9 @@ export class WorldEngine {
     this.fpsFrames = 0
     this.fpsTime = 0
     let next = this.pixelRatio
-    if (fps < 42) next = Math.max(0.6, this.pixelRatio - 0.2)
-    else if (fps > 57) next = Math.min(this.maxPixelRatio, this.pixelRatio + 0.1)
+    const target = this.lite ? 30 : 60
+    if (fps < target * 0.7) next = Math.max(this.lite ? 0.55 : 0.6, this.pixelRatio - 0.2)
+    else if (fps > target * 0.95) next = Math.min(this.maxPixelRatio, this.pixelRatio + 0.1)
     if (Math.abs(next - this.pixelRatio) > 0.01) {
       this.pixelRatio = next
       this.renderer.setPixelRatio(next)
@@ -598,7 +607,11 @@ export class WorldEngine {
     if (!this.running) return
     this.raf = requestAnimationFrame(this.frame)
     const nowMs = performance.now()
-    const dt = Math.min(0.05, Math.max(0, (nowMs - this.lastTime) / 1000))
+    if (this.lite) {
+      const interval = this.section === 'hero' || this.lensRadius > 0 ? 1000 / 30 : 1000 / 15
+      if (nowMs - this.lastTime < interval - 2) return
+    }
+    const dt = Math.min(this.lite ? 0.1 : 0.05, Math.max(0, (nowMs - this.lastTime) / 1000))
     this.lastTime = nowMs
     this.elapsed += dt
     const time = this.elapsed
