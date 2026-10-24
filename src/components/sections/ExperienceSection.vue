@@ -12,16 +12,20 @@ const kindLabel = { work: 'Work', education: 'Education', course: 'Course' } as 
 <template>
   <section id="experience" class="section" aria-labelledby="experience-title" data-section="experience">
     <div class="wrap">
-      <SectionHeader id="experience-title" kicker="Chapter 05 · The road" title="Experience & education" icon="map" lead="Each stop on the road so far." />
+      <SectionHeader id="experience-title" kicker="Chapter 05 · The road" title="Education" icon="book" lead="Where I’m learning to build." />
       <ol class="path">
         <li v-for="(e, i) in entries" :key="i" class="stop">
           <span class="marker slot" aria-hidden="true"><PixelIcon :name="icon[e.kind]" :size="24" /></span>
           <article v-tilt="{ max: 3 }" v-reveal class="panel panel-pad entry">
             <span v-if="e.draft" class="draft-badge">Draft</span>
-            <p class="when pixel">{{ e.start }} — {{ e.end }} <span class="kind">{{ kindLabel[e.kind] }}</span></p>
+            <p class="when pixel">
+              <template v-if="e.expected">Expected graduation · {{ e.expected }}</template>
+              <template v-else>{{ e.start }} — {{ e.end }}</template>
+              <span class="kind">{{ kindLabel[e.kind] }}</span>
+            </p>
             <h3>{{ e.role }}</h3>
             <p class="org">{{ e.organization }}<span v-if="e.location" class="dim"> · {{ e.location }}</span></p>
-            <p class="desc">{{ e.description }}</p>
+            <p v-if="e.description" class="desc">{{ e.description }}</p>
             <ul v-if="e.achievements?.length" class="ach">
               <li v-for="a in e.achievements" :key="a">{{ a }}</li>
             </ul>
@@ -65,7 +69,7 @@ const kindLabel = { work: 'Work', education: 'Education', course: 'Course' } as 
   place-items: center;
   width: 52px;
   height: 52px;
-  background: #2a2538;
+  background: var(--slot-bg);
 }
 .entry {
   display: grid;
