@@ -141,9 +141,6 @@ export const site: SiteConfig = {
     { title: 'Full-stack web development', description: 'Complete web applications, from the user interface to the API and database.', icon: 'pickaxe' },
     { title: 'Frontend development', description: 'Responsive, accessible and interactive interfaces with modern JavaScript and TypeScript.', icon: 'crafting' },
     { title: 'Backend & API development', description: 'REST and real-time APIs, authentication and business logic on a reliable server.', icon: 'sword' },
-    { title: 'Database design', description: 'Data models, schemas and queries that stay correct and fast as data grows.', icon: 'chest' },
-    { title: 'Performance optimization', description: 'Profiling and fixing slow pages, heavy bundles and expensive queries.', icon: 'diamond' },
-    { title: 'Deployment & maintenance', description: 'Shipping to production, automating builds and keeping projects healthy.', icon: 'compass' },
   ],
   testimonials: [],
   learning: [
