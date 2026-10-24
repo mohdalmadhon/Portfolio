@@ -23,7 +23,7 @@ export function getSections(): SectionDef[] {
     { id: 'skills', title: 'Skills', icon: 'crafting', hotbar: true, visible: true },
     { id: 'projects', title: 'Projects', icon: 'chest', hotbar: true, visible: true },
     { id: 'activity', title: 'Activity', icon: 'chart', hotbar: true, visible: true },
-    { id: 'experience', title: 'Experience', icon: 'map', hotbar: true, visible: published(site.experience).length > 0 },
+    { id: 'experience', title: 'Education', icon: 'book', hotbar: true, visible: published(site.experience).length > 0 },
     { id: 'achievements', title: 'Achievements', icon: 'star', hotbar: false, visible: published(site.achievements).length > 0 },
     { id: 'services', title: 'Services', icon: 'pickaxe', hotbar: true, visible: published(site.services).length > 0 },
     { id: 'testimonials', title: 'Testimonials', icon: 'quote', hotbar: false, visible: published(site.testimonials).length > 0 },
