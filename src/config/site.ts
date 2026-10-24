@@ -144,8 +144,9 @@ export const site: SiteConfig = {
   ],
   testimonials: [],
   learning: [
-    { name: 'Add a technology', stage: 'exploring', note: 'What you are exploring and why.', draft: true },
-    { name: 'Add another', stage: 'building', note: 'What you are building with it.', draft: true },
+    { name: 'Full-stack development', stage: 'applying', note: 'Building complete web apps: interfaces, APIs, real-time features and databases.' },
+    { name: 'Systems programming', stage: 'exploring', note: 'Learning how software works close to the hardware, with Rust and C++.' },
+    { name: 'Game development', stage: 'building', note: 'Developing my first game, with a mini game engine as the next step.' },
   ],
   journey: [
     { date: 'YYYY', title: 'Wrote my first program', description: 'Describe the language and what you built.', icon: 'book', draft: true },
