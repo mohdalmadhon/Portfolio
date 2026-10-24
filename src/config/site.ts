@@ -4,8 +4,9 @@ export interface ExperienceEntry {
   kind: 'work' | 'education' | 'course'
   organization: string
   role: string
-  start: string
-  end: string
+  start?: string
+  end?: string
+  expected?: string
   location?: string
   description: string
   skills: string[]
@@ -120,24 +121,19 @@ export const site: SiteConfig = {
   experience: [
     {
       kind: 'education',
-      organization: 'Your institution',
-      role: 'Program or degree',
-      start: 'YYYY',
-      end: 'Present',
-      description: 'Describe what you studied and the kind of projects you built.',
-      skills: ['Add', 'Relevant', 'Skills'],
-      draft: true,
+      organization: 'Reboot Coding Institute',
+      role: 'Full-Stack Development',
+      expected: 'August 2027',
+      description: '',
+      skills: [],
     },
     {
-      kind: 'work',
-      organization: 'Company name',
-      role: 'Role title',
-      start: 'MMM YYYY',
-      end: 'MMM YYYY',
-      description: 'Summarize your responsibilities and the impact of your work.',
-      skills: ['Add', 'Skills'],
-      achievements: ['Add a measurable achievement'],
-      draft: true,
+      kind: 'education',
+      organization: 'Bahrain Polytechnic',
+      role: 'Programming',
+      expected: 'June 2028',
+      description: '',
+      skills: [],
     },
   ],
   achievements: [
