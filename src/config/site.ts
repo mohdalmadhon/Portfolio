@@ -136,15 +136,7 @@ export const site: SiteConfig = {
       skills: [],
     },
   ],
-  achievements: [
-    {
-      title: 'Your first certification',
-      description: 'Replace with a real certificate, award or hackathon result.',
-      date: 'YYYY',
-      kind: 'certification',
-      draft: true,
-    },
-  ],
+  achievements: [],
   services: [
     { title: 'Full-stack web development', description: 'Complete web applications, from the user interface to the API and database.', icon: 'pickaxe' },
     { title: 'Frontend development', description: 'Responsive, accessible and interactive interfaces with modern JavaScript and TypeScript.', icon: 'crafting' },
