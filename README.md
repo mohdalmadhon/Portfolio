@@ -160,6 +160,7 @@ GITHUB_TOKEN=<optional-token> GH_USERNAME=<your-username> npm run data
   - **skin** fragments inside the circle are discarded, with a soft, pixel-dithered edge and a glowing rim;
   - **skeleton** fragments outside the circle are discarded, using the complementary dither, so the two blend exactly.
 - Only character materials take part, so the world behind is never affected. The reveal follows the cursor with damping. It grows only while a ray from the cursor hits the character's geometry, and shrinks back to nothing when the cursor leaves.
+- **The parrot:** an original blocky macaw sits on a post next to the character (`src/three/parrot.ts`). It bobs, looks toward the cursor, flaps now and then, and flaps on click or tap.
 - **Touch / keyboard:** tap the character to reveal at that point, or use the **X‑ray vision** button for an automatic sweep.
 
 ---
