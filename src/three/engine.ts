@@ -5,6 +5,7 @@ import { buildWorld, type Biome, type WorldBuild } from './world'
 export type { Biome }
 import { createPlayer, detectSlimSkin, type PlayerRig } from './playerModel'
 import { createRevealUniforms, type RevealUniforms } from './reveal'
+import { createParrot, type Parrot } from './parrot'
 
 export type Quality = 'auto' | 'high' | 'low'
 export type XrayMode = 'off' | 'auto'
@@ -55,6 +56,8 @@ function loadTexture(url: string): Promise<{ tex: THREE.Texture; image: HTMLImag
     img.src = url
   })
 }
+
+const PARROT_LABEL = 'Parrot · click me'
 
 export function isWebGLAvailable(): boolean {
   try {
@@ -112,6 +115,7 @@ export class WorldEngine {
   private size = { w: 1, h: 1 }
   private shadowsEnabled: boolean
   private lite: boolean
+  private parrot: Parrot | null = null
   private headLook = new THREE.Vector2()
   private cleanup: (() => void)[] = []
   private extraDisposables: { dispose(): void }[] = []
@@ -201,6 +205,10 @@ export class WorldEngine {
     this.rig.root.position.set(0, 0, 0)
     this.rig.root.rotation.y = 0.25
     this.scene.add(this.rig.root)
+    this.parrot = createParrot(this.textures, this.biome === 'ancient', this.shadowsEnabled)
+    this.parrot.group.position.set(1.15, 0, 0.3)
+    this.parrot.group.rotation.y = -0.35
+    this.scene.add(this.parrot.group)
 
     const starCount = 700
     const sp = new Float32Array(starCount * 3)
@@ -269,11 +277,16 @@ export class WorldEngine {
       if (e.pointerType !== 'mouse') {
         this.updateHover()
         if (this.hoverCharacter) this.touchUntil = performance.now() + 2600
+        if (this.hovered === PARROT_LABEL) this.parrot?.flap()
       }
     }
     const onClick = (e: MouseEvent) => {
       if (e.target !== this.canvas) return
       this.updateHover()
+      if (this.hovered === PARROT_LABEL) {
+        this.parrot?.flap()
+        return
+      }
       if (this.hovered && !this.hoverCharacter) {
         const hit = this.world.interactives.find((i) => i.label === this.hovered)
         if (hit) this.cb.onSelect?.(hit.section)
@@ -442,7 +455,8 @@ export class WorldEngine {
     const hits = this.section === 'hero' ? this.raycaster.intersectObjects(this.rig.hitMeshes, false) : []
     this.hoverCharacter = hits.length > 0
     let label: string | null = null
-    if (!this.hoverCharacter) {
+    if (!this.hoverCharacter && this.parrot && this.raycaster.intersectObjects(this.parrot.hitMeshes, false).length) label = PARROT_LABEL
+    if (!this.hoverCharacter && !label) {
       const objs = this.world.interactives.map((i) => i.object)
       const ih = this.raycaster.intersectObjects(objs, false)
       if (ih.length) label = this.world.interactives.find((i) => i.object === ih[0].object)?.label ?? null
@@ -622,6 +636,7 @@ export class WorldEngine {
     }
     this.applyTimeOfDay(this.timeOfDay)
     this.animateRig(time, dt)
+    this.parrot?.update(time, dt, this.section === 'hero' && this.pointerInside ? this.pointer : null, this.reducedMotion)
     this.animateWorld(time, dt)
     this.updateCamera(time, dt)
     this.rig.root.updateMatrixWorld()
@@ -652,6 +667,7 @@ export class WorldEngine {
     this.cleanup.forEach((f) => f())
     this.world?.disposables.forEach((d) => d.dispose())
     this.rig?.geometries.forEach((g) => g.dispose())
+    this.parrot?.dispose()
     this.rig?.materials.forEach((m) => m.dispose())
     this.extraDisposables.forEach((d) => d.dispose())
     this.textures.dispose()
