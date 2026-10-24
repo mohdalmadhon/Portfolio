@@ -148,10 +148,7 @@ export const site: SiteConfig = {
     { name: 'Systems programming', stage: 'exploring', note: 'Learning how software works close to the hardware, with Rust and C++.' },
     { name: 'Game development', stage: 'building', note: 'Developing my first game, with a mini game engine as the next step.' },
   ],
-  journey: [
-    { date: 'YYYY', title: 'Wrote my first program', description: 'Describe the language and what you built.', icon: 'book', draft: true },
-    { date: 'YYYY', title: 'Shipped my first full-stack project', description: 'Describe the project and what you learned.', icon: 'pickaxe', draft: true },
-  ],
+  journey: [],
   interests: [
     { title: 'Add an interest', detail: 'Something you enjoy outside of code.', icon: 'compass', draft: true },
   ],
