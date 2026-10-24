@@ -110,7 +110,7 @@ export interface WorldBuild {
   disposables: { dispose(): void }[]
 }
 
-export function buildWorld(textures: BlockTextures, shadows: boolean, biome: Biome = 'overworld'): WorldBuild {
+export function buildWorld(textures: BlockTextures, shadows: boolean, biome: Biome = 'overworld', lite = false): WorldBuild {
   const ancient = biome === 'ancient'
   const blocks = new Map<string, BlockType>()
   const key = (x: number, y: number, z: number) => `${x},${y},${z}`
@@ -151,7 +151,7 @@ export function buildWorld(textures: BlockTextures, shadows: boolean, biome: Bio
         const h = wall || Math.round((n - 0.45) * 1.6 * (1 - flat))
         heights.set(`${x},${z}`, h)
         const sculky = fbm(x + 40, z - 17, 11) > 0.5
-        for (let y = h - 1; y >= Math.min(-3, h - 3); y--) {
+        for (let y = h - 1; y >= (lite && !wall ? h - 2 : Math.min(-3, h - 3)); y--) {
           let t: BlockType = 'deepslate'
           if (y === h - 1) t = sculky ? 'sculk' : wall ? 'deepslate' : hash2(x, z, 23) < 0.55 ? 'deepslateTiles' : 'deepslate'
           raw(x, y, z, t)
@@ -172,7 +172,7 @@ export function buildWorld(textures: BlockTextures, shadows: boolean, biome: Bio
         const rise = THREE.MathUtils.smoothstep(d, 0.3, 0.85) * (n * 4.2) + (z < -10 ? 1 : 0)
         const h = Math.round(rise * (1 - flat))
         heights.set(`${x},${z}`, h)
-        const depth = 3 + Math.floor((1 - d) * 11 + hash2(x, z, 9) * 3)
+        const depth = lite ? 2 + Math.floor((1 - d) * 4) : 3 + Math.floor((1 - d) * 11 + hash2(x, z, 9) * 3)
         for (let y = h - 1; y >= h - depth; y--) {
           let t: BlockType
           if (y === h - 1) t = 'grass'
@@ -403,7 +403,7 @@ export function buildWorld(textures: BlockTextures, shadows: boolean, biome: Bio
       const [x, z] = k.split(',').map(Number)
       if (occupied.has(k) || Math.hypot(x, z) < 3) return
       if (!groundOk(get(x, h - 1, z)) || get(x, h, z)) return
-      if (hash2(x, z, 40 + fi) < f.density) spots.push(new THREE.Vector3(x + 0.5, h + f.scale / 2, z + 0.5))
+      if (hash2(x, z, 40 + fi) < f.density * (lite ? 0.45 : 1)) spots.push(new THREE.Vector3(x + 0.5, h + f.scale / 2, z + 0.5))
     })
     if (!spots.length) return
     const glow = f.name === 'candle' || f.name === 'sculkSprout'
@@ -517,7 +517,7 @@ export function buildWorld(textures: BlockTextures, shadows: boolean, biome: Bio
   const cloudMat = new THREE.MeshLambertMaterial({ color: '#ffffff', transparent: true, opacity: 0.82, emissive: new THREE.Color('#ffffff'), emissiveIntensity: 0.35, depthWrite: false })
   disposables.push(cloudGeo, cloudMat)
   const cloudData: WorldBuild['cloudData'] = []
-  for (let i = 0; i < (ancient ? 0 : 26); i++) {
+  for (let i = 0; i < (ancient ? 0 : lite ? 10 : 26); i++) {
     const below = i % 3 === 0
     cloudData.push({
       x: -90 + hash2(i, 1, 5) * 180,
