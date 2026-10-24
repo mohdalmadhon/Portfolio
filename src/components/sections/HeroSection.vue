@@ -250,6 +250,9 @@ onMounted(async () => {
     right: 16px;
     bottom: auto;
   }
+  .hint-text {
+    display: none;
+  }
   .scroll-cue {
     display: none;
   }
