@@ -166,6 +166,8 @@ GITHUB_TOKEN=<optional-token> GH_USERNAME=<your-username> npm run data
 
 ## Performance & accessibility
 
+- **Phones and low-end devices** get a lighter 3D world automatically. It turns on for touch screens, small screens, devices with 4 GB of memory or less or 4 CPU cores or fewer, and Data Saver. Lite mode has no shadows or anti-aliasing, renders at lower resolution, generates fewer blocks, plants and particles, and uses fewer lights. It renders at 30 fps on the hero and 15 fps behind other sections. Choose **⚙ → Graphics → Fancy** to force the full world, or turn 3D off.
+
 - The 3D engine and Three.js are **lazy-loaded** after first paint, in a separate chunk. Content is readable before the world loads.
 - Instanced meshes (one per block type, faces merged per material), hidden-block culling, ~25 draw calls for the whole island. All GPU resources are disposed on teardown.
 - **Auto quality** adjusts resolution to keep frame rate up. The ⚙ menu offers *Fancy / Fast*, a **3D on/off switch** (static backdrop and 2D character portrait instead), and **Motion: System / Full / Reduced**. `prefers-reduced-motion` is respected.
