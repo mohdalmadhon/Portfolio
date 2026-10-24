@@ -128,7 +128,7 @@ onBeforeUnmount(() => {
       <label class="set-row">
         <span>
           <strong>Graphics</strong>
-          <small class="dim">Auto adjusts resolution to keep motion smooth.</small>
+          <small class="dim">Auto keeps motion smooth and uses a lighter world on phones.</small>
         </span>
         <select v-model="settings.quality" class="input set-select" :disabled="!settings.world">
           <option value="auto">Auto</option>
