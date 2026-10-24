@@ -1,0 +1,685 @@
+{
+  "categories": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Databases",
+    "framework": "Frameworks & libraries",
+    "tooling": "Development tools",
+    "devops": "DevOps & deployment",
+    "mobile": "Mobile",
+    "testing": "Testing"
+  },
+  "npm": {
+    "vue": [
+      "Vue",
+      "frontend"
+    ],
+    "nuxt": [
+      "Nuxt",
+      "frontend"
+    ],
+    "react": [
+      "React",
+      "frontend"
+    ],
+    "next": [
+      "Next.js",
+      "frontend"
+    ],
+    "svelte": [
+      "Svelte",
+      "frontend"
+    ],
+    "@sveltejs/kit": [
+      "SvelteKit",
+      "frontend"
+    ],
+    "@angular/core": [
+      "Angular",
+      "frontend"
+    ],
+    "solid-js": [
+      "Solid",
+      "frontend"
+    ],
+    "preact": [
+      "Preact",
+      "frontend"
+    ],
+    "astro": [
+      "Astro",
+      "frontend"
+    ],
+    "vue-router": [
+      "Vue Router",
+      "framework"
+    ],
+    "pinia": [
+      "Pinia",
+      "framework"
+    ],
+    "vuex": [
+      "Vuex",
+      "framework"
+    ],
+    "redux": [
+      "Redux",
+      "framework"
+    ],
+    "@reduxjs/toolkit": [
+      "Redux",
+      "framework"
+    ],
+    "three": [
+      "Three.js",
+      "framework"
+    ],
+    "gsap": [
+      "GSAP",
+      "framework"
+    ],
+    "d3": [
+      "D3.js",
+      "framework"
+    ],
+    "chart.js": [
+      "Chart.js",
+      "framework"
+    ],
+    "socket.io": [
+      "Socket.IO",
+      "backend"
+    ],
+    "socket.io-client": [
+      "Socket.IO",
+      "framework"
+    ],
+    "ws": [
+      "WebSocket (ws)",
+      "backend"
+    ],
+    "express": [
+      "Express",
+      "backend"
+    ],
+    "fastify": [
+      "Fastify",
+      "backend"
+    ],
+    "koa": [
+      "Koa",
+      "backend"
+    ],
+    "@nestjs/core": [
+      "NestJS",
+      "backend"
+    ],
+    "hono": [
+      "Hono",
+      "backend"
+    ],
+    "graphql": [
+      "GraphQL",
+      "backend"
+    ],
+    "@apollo/client": [
+      "Apollo GraphQL",
+      "framework"
+    ],
+    "axios": [
+      "Axios",
+      "framework"
+    ],
+    "tailwindcss": [
+      "Tailwind CSS",
+      "frontend"
+    ],
+    "bootstrap": [
+      "Bootstrap",
+      "frontend"
+    ],
+    "sass": [
+      "Sass",
+      "frontend"
+    ],
+    "prisma": [
+      "Prisma",
+      "database"
+    ],
+    "@prisma/client": [
+      "Prisma",
+      "database"
+    ],
+    "mongoose": [
+      "MongoDB",
+      "database"
+    ],
+    "mongodb": [
+      "MongoDB",
+      "database"
+    ],
+    "pg": [
+      "PostgreSQL",
+      "database"
+    ],
+    "mysql2": [
+      "MySQL",
+      "database"
+    ],
+    "sqlite3": [
+      "SQLite",
+      "database"
+    ],
+    "better-sqlite3": [
+      "SQLite",
+      "database"
+    ],
+    "redis": [
+      "Redis",
+      "database"
+    ],
+    "ioredis": [
+      "Redis",
+      "database"
+    ],
+    "firebase": [
+      "Firebase",
+      "backend"
+    ],
+    "@supabase/supabase-js": [
+      "Supabase",
+      "backend"
+    ],
+    "jsonwebtoken": [
+      "JWT",
+      "backend"
+    ],
+    "bcrypt": [
+      "bcrypt",
+      "backend"
+    ],
+    "vite": [
+      "Vite",
+      "tooling"
+    ],
+    "webpack": [
+      "Webpack",
+      "tooling"
+    ],
+    "typescript": [
+      "TypeScript tooling",
+      "tooling"
+    ],
+    "eslint": [
+      "ESLint",
+      "tooling"
+    ],
+    "prettier": [
+      "Prettier",
+      "tooling"
+    ],
+    "jest": [
+      "Jest",
+      "testing"
+    ],
+    "vitest": [
+      "Vitest",
+      "testing"
+    ],
+    "mocha": [
+      "Mocha",
+      "testing"
+    ],
+    "cypress": [
+      "Cypress",
+      "testing"
+    ],
+    "@playwright/test": [
+      "Playwright",
+      "testing"
+    ],
+    "playwright": [
+      "Playwright",
+      "testing"
+    ],
+    "electron": [
+      "Electron",
+      "framework"
+    ],
+    "react-native": [
+      "React Native",
+      "mobile"
+    ],
+    "expo": [
+      "Expo",
+      "mobile"
+    ]
+  },
+  "go": {
+    "github.com/gorilla/websocket": [
+      "Gorilla WebSocket",
+      "backend"
+    ],
+    "github.com/gorilla/mux": [
+      "Gorilla Mux",
+      "backend"
+    ],
+    "github.com/gin-gonic/gin": [
+      "Gin",
+      "backend"
+    ],
+    "github.com/labstack/echo": [
+      "Echo",
+      "backend"
+    ],
+    "github.com/gofiber/fiber": [
+      "Fiber",
+      "backend"
+    ],
+    "github.com/go-chi/chi": [
+      "chi",
+      "backend"
+    ],
+    "github.com/mattn/go-sqlite3": [
+      "SQLite",
+      "database"
+    ],
+    "modernc.org/sqlite": [
+      "SQLite",
+      "database"
+    ],
+    "github.com/lib/pq": [
+      "PostgreSQL",
+      "database"
+    ],
+    "github.com/jackc/pgx": [
+      "PostgreSQL",
+      "database"
+    ],
+    "github.com/go-sql-driver/mysql": [
+      "MySQL",
+      "database"
+    ],
+    "go.mongodb.org/mongo-driver": [
+      "MongoDB",
+      "database"
+    ],
+    "github.com/redis/go-redis": [
+      "Redis",
+      "database"
+    ],
+    "github.com/go-redis/redis": [
+      "Redis",
+      "database"
+    ],
+    "gorm.io/gorm": [
+      "GORM",
+      "database"
+    ],
+    "github.com/golang-migrate/migrate": [
+      "golang-migrate",
+      "database"
+    ],
+    "github.com/gofrs/uuid": [
+      "UUID",
+      "backend"
+    ],
+    "github.com/google/uuid": [
+      "UUID",
+      "backend"
+    ],
+    "golang.org/x/crypto": [
+      "Go crypto (bcrypt)",
+      "backend"
+    ],
+    "github.com/golang-jwt/jwt": [
+      "JWT",
+      "backend"
+    ],
+    "github.com/stretchr/testify": [
+      "Testify",
+      "testing"
+    ],
+    "google.golang.org/grpc": [
+      "gRPC",
+      "backend"
+    ]
+  },
+  "pip": {
+    "django": [
+      "Django",
+      "backend"
+    ],
+    "flask": [
+      "Flask",
+      "backend"
+    ],
+    "fastapi": [
+      "FastAPI",
+      "backend"
+    ],
+    "sqlalchemy": [
+      "SQLAlchemy",
+      "database"
+    ],
+    "psycopg2": [
+      "PostgreSQL",
+      "database"
+    ],
+    "pymongo": [
+      "MongoDB",
+      "database"
+    ],
+    "numpy": [
+      "NumPy",
+      "framework"
+    ],
+    "pandas": [
+      "pandas",
+      "framework"
+    ],
+    "pytest": [
+      "pytest",
+      "testing"
+    ],
+    "requests": [
+      "Requests",
+      "framework"
+    ],
+    "pygame": [
+      "Pygame",
+      "framework"
+    ]
+  },
+  "files": [
+    [
+      "(^|/)Dockerfile$",
+      "Docker",
+      "devops"
+    ],
+    [
+      "(^|/)docker-compose\\.ya?ml$|(^|/)compose\\.ya?ml$",
+      "Docker Compose",
+      "devops"
+    ],
+    [
+      "^\\.github/workflows/.+\\.ya?ml$",
+      "GitHub Actions",
+      "devops"
+    ],
+    [
+      "(^|/)\\.gitlab-ci\\.yml$",
+      "GitLab CI",
+      "devops"
+    ],
+    [
+      "(^|/)vercel\\.json$",
+      "Vercel",
+      "devops"
+    ],
+    [
+      "(^|/)netlify\\.toml$",
+      "Netlify",
+      "devops"
+    ],
+    [
+      "(^|/)Makefile$",
+      "Make",
+      "tooling"
+    ],
+    [
+      "(^|/)go\\.mod$",
+      "Go modules",
+      "tooling"
+    ],
+    [
+      "\\.(sqlite|sqlite3|db)$",
+      "SQLite",
+      "database"
+    ],
+    [
+      "(^|/)migrations?/.+\\.sql$",
+      "SQL migrations",
+      "database"
+    ],
+    [
+      "\\.sql$",
+      "SQL",
+      "database"
+    ],
+    [
+      "\\.vue$",
+      "Vue",
+      "frontend"
+    ],
+    [
+      "\\.(jsx|tsx)$",
+      "JSX/TSX",
+      "frontend"
+    ],
+    [
+      "\\.(scss|sass)$",
+      "Sass",
+      "frontend"
+    ],
+    [
+      "(^|/)tailwind\\.config\\.(js|ts|cjs|mjs)$",
+      "Tailwind CSS",
+      "frontend"
+    ],
+    [
+      "(^|/)vite\\.config\\.(js|ts|mjs)$",
+      "Vite",
+      "tooling"
+    ],
+    [
+      "(^|/)webpack\\.config\\.(js|ts)$",
+      "Webpack",
+      "tooling"
+    ],
+    [
+      "\\.xcodeproj/",
+      "Xcode",
+      "mobile"
+    ],
+    [
+      "(^|/)Package\\.swift$",
+      "Swift Package Manager",
+      "mobile"
+    ],
+    [
+      "(^|/)Podfile$",
+      "CocoaPods",
+      "mobile"
+    ],
+    [
+      "(^|/)pubspec\\.yaml$",
+      "Flutter",
+      "mobile"
+    ],
+    [
+      "(^|/)AndroidManifest\\.xml$",
+      "Android",
+      "mobile"
+    ],
+    [
+      "(^|/)build\\.gradle(\\.kts)?$",
+      "Gradle",
+      "tooling"
+    ],
+    [
+      "(^|/)pom\\.xml$",
+      "Maven",
+      "tooling"
+    ],
+    [
+      "(^|/)Cargo\\.toml$",
+      "Cargo",
+      "tooling"
+    ],
+    [
+      "(^|/)requirements\\.txt$|(^|/)pyproject\\.toml$",
+      "pip / Python packaging",
+      "tooling"
+    ],
+    [
+      "(^|/)\\.eslintrc(\\.\\w+)?$|(^|/)eslint\\.config\\.(js|mjs|ts)$",
+      "ESLint",
+      "tooling"
+    ],
+    [
+      "_test\\.go$",
+      "Go testing",
+      "testing"
+    ],
+    [
+      "\\.(glb|gltf)$",
+      "glTF 3D assets",
+      "frontend"
+    ],
+    [
+      "(^|/)CNAME$",
+      "GitHub Pages",
+      "devops"
+    ],
+    [
+      "(^|/)graphql/|\\.graphql$|\\.gql$",
+      "GraphQL",
+      "backend"
+    ]
+  ],
+  "topics": {
+    "vue": [
+      "Vue",
+      "frontend"
+    ],
+    "vuejs": [
+      "Vue",
+      "frontend"
+    ],
+    "react": [
+      "React",
+      "frontend"
+    ],
+    "angular": [
+      "Angular",
+      "frontend"
+    ],
+    "svelte": [
+      "Svelte",
+      "frontend"
+    ],
+    "threejs": [
+      "Three.js",
+      "framework"
+    ],
+    "three-js": [
+      "Three.js",
+      "framework"
+    ],
+    "nodejs": [
+      "Node.js",
+      "backend"
+    ],
+    "node": [
+      "Node.js",
+      "backend"
+    ],
+    "express": [
+      "Express",
+      "backend"
+    ],
+    "graphql": [
+      "GraphQL",
+      "backend"
+    ],
+    "websocket": [
+      "WebSockets",
+      "backend"
+    ],
+    "websockets": [
+      "WebSockets",
+      "backend"
+    ],
+    "rest-api": [
+      "REST APIs",
+      "backend"
+    ],
+    "api": [
+      "APIs",
+      "backend"
+    ],
+    "sqlite": [
+      "SQLite",
+      "database"
+    ],
+    "sqlite3": [
+      "SQLite",
+      "database"
+    ],
+    "postgresql": [
+      "PostgreSQL",
+      "database"
+    ],
+    "postgres": [
+      "PostgreSQL",
+      "database"
+    ],
+    "mysql": [
+      "MySQL",
+      "database"
+    ],
+    "mongodb": [
+      "MongoDB",
+      "database"
+    ],
+    "redis": [
+      "Redis",
+      "database"
+    ],
+    "docker": [
+      "Docker",
+      "devops"
+    ],
+    "kubernetes": [
+      "Kubernetes",
+      "devops"
+    ],
+    "github-actions": [
+      "GitHub Actions",
+      "devops"
+    ],
+    "github-pages": [
+      "GitHub Pages",
+      "devops"
+    ],
+    "tailwindcss": [
+      "Tailwind CSS",
+      "frontend"
+    ],
+    "swiftui": [
+      "SwiftUI",
+      "mobile"
+    ],
+    "ios": [
+      "iOS",
+      "mobile"
+    ],
+    "android": [
+      "Android",
+      "mobile"
+    ],
+    "flutter": [
+      "Flutter",
+      "mobile"
+    ],
+    "jwt": [
+      "JWT",
+      "backend"
+    ],
+    "oauth": [
+      "OAuth",
+      "backend"
+    ]
+  }
+}
