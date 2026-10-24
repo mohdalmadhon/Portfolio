@@ -57,7 +57,7 @@ export interface JourneyMilestone {
 export interface InterestItem {
   title: string
   detail: string
-  icon: 'diamond' | 'emerald' | 'pickaxe' | 'book' | 'star' | 'chest' | 'map' | 'compass' | 'sword'
+  icon: 'diamond' | 'emerald' | 'pickaxe' | 'book' | 'star' | 'chest' | 'map' | 'compass' | 'sword' | 'car' | 'controller' | 'palette' | 'wing' | 'brick' | 'ball'
   draft?: boolean
 }
 
@@ -150,6 +150,11 @@ export const site: SiteConfig = {
   ],
   journey: [],
   interests: [
-    { title: 'Add an interest', detail: 'Something you enjoy outside of code.', icon: 'compass', draft: true },
+    { title: 'Formula One', detail: 'Race weekends, strategy calls and the engineering behind the cars.', icon: 'car' },
+    { title: 'Video games', detail: 'Playing them, and learning how they are built.', icon: 'controller' },
+    { title: 'Pixel art', detail: 'Drawing characters and worlds one pixel at a time.', icon: 'palette' },
+    { title: 'Aerodynamics engineering', detail: 'How air flows over wings, cars and anything fast.', icon: 'wing' },
+    { title: 'LEGO collecting', detail: 'Collecting sets and building them brick by brick.', icon: 'brick' },
+    { title: 'Football', detail: 'Watching matches and playing the game.', icon: 'ball' },
   ],
 }
