@@ -17,19 +17,23 @@ function discover(i: number) {
 <template>
   <section id="interests" class="section" aria-labelledby="interests-title" data-section="interests">
     <div class="wrap">
-      <SectionHeader id="interests-title" kicker="Hidden loot" title="Interests & fun facts" icon="diamond" lead="Open each block to discover something about me." />
+      <SectionHeader id="interests-title" kicker="Hidden loot" title="Interests" icon="diamond" lead="What I enjoy when I’m not coding. Open a card to learn more." />
       <p class="dim count pixel">{{ found.size }} / {{ items.length }} discovered</p>
       <ul class="loot">
         <li v-for="(it, i) in items" :key="i">
-          <button type="button" class="block" :class="{ open: found.has(i) }" :aria-expanded="found.has(i)" @click="discover(i)">
+          <button v-tilt="{ max: 8 }" v-reveal="i % 3" type="button" class="block" :class="{ open: found.has(i) }" :aria-expanded="found.has(i)" @click="discover(i)">
             <span v-if="it.draft" class="draft-badge">Draft</span>
-            <span class="face front" aria-hidden="true"><PixelIcon name="chest" :size="44" /><span class="pixel q">?</span></span>
+            <span class="face front" aria-hidden="true">
+              <PixelIcon :name="it.icon" :size="48" />
+              <strong class="pixel ft">{{ it.title }}</strong>
+              <span class="tap dim">Tap to open</span>
+            </span>
             <span class="face back">
               <PixelIcon :name="it.icon" :size="30" />
               <strong>{{ it.title }}</strong>
               <span>{{ it.detail }}</span>
             </span>
-            <span v-if="!found.has(i)" class="sr-only">Reveal: {{ it.title }}</span>
+            <span v-if="!found.has(i)" class="sr-only">Show more about {{ it.title }}</span>
           </button>
         </li>
       </ul>
@@ -44,7 +48,7 @@ function discover(i: number) {
 }
 .loot {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
   gap: 14px;
   margin: 0;
   padding: 0;
@@ -79,9 +83,13 @@ function discover(i: number) {
 .front {
   background: repeating-linear-gradient(45deg, var(--slot-bg) 0 10px, var(--panel-3) 10px 20px);
 }
-.q {
-  font-size: 22px;
-  color: var(--warn);
+.ft {
+  font-size: 15px;
+  color: var(--heading);
+  line-height: 1.3;
+}
+.tap {
+  font-size: 12px;
 }
 .back {
   background: var(--panel-solid);
